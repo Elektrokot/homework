@@ -1,19 +1,16 @@
-import pytest
 from typing import Dict, List
 
-
 from src.processing import filter_by_state, sort_by_date
-from tests.conftest import transactions
 
 
-def test_filter_by_state(transactions):
+def test_filter_by_state(transactions: List[Dict]):  # type: ignore[no-untyped-def]
     # Фильтруем транзакции по состоянию 'EXECUTED'
     executed_transactions = filter_by_state(transactions, "EXECUTED")
 
     # Ожидаемые транзакции с состоянием 'EXECUTED'
     expected_executed_transactions = [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
-        {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"}
+        {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     ]
 
     # Проверяем, что фильтрованные транзакции соответствуют ожидаемым
@@ -25,14 +22,14 @@ def test_filter_by_state(transactions):
     # Ожидаемые транзакции с состоянием 'CANCELED'
     expected_canceled_transactions = [
         {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
-        {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"}
+        {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
     ]
 
     # Проверяем, что фильтрованные транзакции соответствуют ожидаемым
     assert canceled_transactions == expected_canceled_transactions
 
 
-def test_sort_by_date(transactions: List[Dict]):
+def test_sort_by_date(transactions: List[Dict]):  # type: ignore[no-untyped-def]
     # Сортируем транзакции по дате в порядке убывания
     sorted_transactions_desc = sort_by_date(transactions, reverse=True)
 
@@ -41,7 +38,7 @@ def test_sort_by_date(transactions: List[Dict]):
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
         {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
-        {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"}
+        {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     ]
 
     # Проверяем, что отсортированные транзакции соответствуют ожидаемым
@@ -55,7 +52,7 @@ def test_sort_by_date(transactions: List[Dict]):
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
         {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
         {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
-        {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"}
+        {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
     ]
 
     # Проверяем, что отсортированные транзакции соответствуют ожидаемым
