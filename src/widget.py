@@ -1,4 +1,4 @@
-from .masks import get_mask_account, get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_info: str) -> str:
@@ -8,6 +8,7 @@ def mask_account_card(card_info: str) -> str:
     if "Счет" in card_info:
         return f"{card_info[:5]}{get_mask_account(card_info)}"
     else:
+        # cleaned_card_info_str = ''.join(char for char in card_info if char.isalpha())
         return f"{card_info[:-16]}{get_mask_card_number(card_info[-16:])}"
 
 
