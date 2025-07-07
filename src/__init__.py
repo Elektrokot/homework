@@ -24,3 +24,16 @@
 #     print(filter_by_state(list(transactions), state="CANCELED"))
 #     print(sort_by_date(list(transactions)))
 #     print(sort_by_date(list(transactions), reverse=False))
+from src.masks import get_mask_account, get_mask_card_number
+from src.utils import load_transactions
+
+# Пример использования masks.py
+try:
+    print(get_mask_card_number("1234567890123456"))  # Успешный случай
+    print(get_mask_account("12345678901234567890"))  # Успешный случай
+except Exception as e:
+    print(f"Ошибка: {e}")
+
+# Пример использования utils.py
+transactions = load_transactions("data/operations.json")
+print(f"Загружено транзакций: {len(transactions)}")
