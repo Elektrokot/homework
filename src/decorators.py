@@ -12,7 +12,7 @@ def log(filename=None):  # type: ignore[no-untyped-def]
                 msg_start = f"Calling function '{func.__name__}' with args: {args}, kwargs: {kwargs}"
 
                 if filename:
-                    with open(filename, "a") as f:
+                    with open(filename, "a", encoding="utf-8") as f:
                         f.write(msg_start + "\n")
                 else:
                     print(msg_start)
@@ -23,7 +23,7 @@ def log(filename=None):  # type: ignore[no-untyped-def]
                 # Логирование успешного завершения
                 msg_success = f"Function '{func.__name__}' returned: {result}"
                 if filename:
-                    with open(filename, "a") as f:
+                    with open(filename, "a", encoding="utf-8") as f:
                         f.write(msg_success + "\n")
                 else:
                     print(msg_success)
@@ -37,7 +37,7 @@ def log(filename=None):  # type: ignore[no-untyped-def]
                     f" {e} with args: {args}, kwargs: {kwargs}"
                 )
                 if filename:
-                    with open(filename, "a") as f:
+                    with open(filename, "a", encoding="utf-8") as f:
                         f.write(msg_error + "\n")
                 else:
                     print(msg_error)

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Coverage for src\widget.py: 100%</title>
+    <title>Coverage for src\widget.py: 89%</title>
     <link rel="icon" sizes="32x32" href="favicon_32_cb_58284776.png">
     <link rel="stylesheet" href="style_cb_718ce007.css" type="text/css">
     <script src="coverage_html_cb_497bf287.js" defer></script>
@@ -12,7 +12,7 @@
     <div class="content">
         <h1>
             <span class="text">Coverage for </span><b>src\widget.py</b>:
-            <span class="pc_cov">100%</span>
+            <span class="pc_cov">89%</span>
         </h1>
         <aside id="help_panel_wrapper">
             <input id="help_panel_state" type="checkbox">
@@ -54,18 +54,18 @@
             </div>
         </aside>
         <h2>
-            <span class="text">7 statements &nbsp;</span>
-            <button type="button" class="run button_toggle_run" value="run" data-shortcut="r" title="Toggle lines run">7<span class="text"> run</span></button>
-            <button type="button" class="mis show_mis button_toggle_mis" value="mis" data-shortcut="m" title="Toggle lines missing">0<span class="text"> missing</span></button>
+            <span class="text">9 statements &nbsp;</span>
+            <button type="button" class="run button_toggle_run" value="run" data-shortcut="r" title="Toggle lines run">8<span class="text"> run</span></button>
+            <button type="button" class="mis show_mis button_toggle_mis" value="mis" data-shortcut="m" title="Toggle lines missing">1<span class="text"> missing</span></button>
             <button type="button" class="exc show_exc button_toggle_exc" value="exc" data-shortcut="x" title="Toggle lines excluded">0<span class="text"> excluded</span></button>
         </h2>
         <p class="text">
-            <a id="prevFileLink" class="nav" href="z_145eef247bfb46b6_processing_py.html">&#xab; prev</a> &nbsp; &nbsp;
+            <a id="prevFileLink" class="nav" href="z_145eef247bfb46b6_utils_py.html">&#xab; prev</a> &nbsp; &nbsp;
             <a id="indexLink" class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
             <a id="nextFileLink" class="nav" href="index.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.8.2">coverage.py v7.8.2</a>,
-            created at 2025-06-09 13:57 +1000
+            created at 2025-07-25 22:32 +1000
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"></button>
@@ -87,28 +87,31 @@
     <p class="pln"><span class="n"><a id="t5" href="#t5">5</a></span><span class="t">    <span class="str">"""&#1060;&#1091;&#1085;&#1082;&#1094;&#1080;&#1103; &#1086;&#1073;&#1088;&#1072;&#1073;&#1072;&#1090;&#1099;&#1074;&#1072;&#1077;&#1090; &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1102; &#1082;&#1072;&#1082; &#1086; &#1082;&#1072;&#1088;&#1090;&#1072;&#1093;,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t6" href="#t6">6</a></span><span class="t"><span class="str">    &#1090;&#1072;&#1082; &#1080; &#1086; &#1089;&#1095;&#1077;&#1090;&#1072;&#1093; &#1080; &#1074;&#1086;&#1079;&#1074;&#1088;&#1072;&#1097;&#1072;&#1077;&#1090; &#1089;&#1090;&#1088;&#1086;&#1082;&#1091; &#1089; &#1079;&#1072;&#1084;&#1072;&#1089;&#1082;&#1080;&#1088;&#1086;&#1074;&#1072;&#1085;&#1085;&#1099;&#1084; &#1085;&#1086;&#1084;&#1077;&#1088;&#1086;&#1084;."""</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t7" href="#t7">7</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t8" href="#t8">8</a></span><span class="t">    <span class="key">if</span> <span class="str">"&#1057;&#1095;&#1077;&#1090;"</span> <span class="key">in</span> <span class="nam">card_info</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t">        <span class="key">return</span> <span class="fst">f"</span><span class="op">{</span><span class="nam">card_info</span><span class="op">[</span><span class="op">:</span><span class="num">5</span><span class="op">]</span><span class="op">}</span><span class="op">{</span><span class="nam">get_mask_account</span><span class="op">(</span><span class="nam">card_info</span><span class="op">)</span><span class="op">}</span><span class="fst">"</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t10" href="#t10">10</a></span><span class="t">    <span class="key">else</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t11" href="#t11">11</a></span><span class="t">        <span class="com"># cleaned_card_info_str = ''.join(char for char in card_info if char.isalpha())</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t12" href="#t12">12</a></span><span class="t">        <span class="key">return</span> <span class="fst">f"</span><span class="op">{</span><span class="nam">card_info</span><span class="op">[</span><span class="op">:</span><span class="op">-</span><span class="num">16</span><span class="op">]</span><span class="op">}</span><span class="op">{</span><span class="nam">get_mask_card_number</span><span class="op">(</span><span class="nam">card_info</span><span class="op">[</span><span class="op">-</span><span class="num">16</span><span class="op">:</span><span class="op">]</span><span class="op">)</span><span class="op">}</span><span class="fst">"</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t13" href="#t13">13</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t14" href="#t14">14</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t15" href="#t15">15</a></span><span class="t"><span class="key">def</span> <span class="nam">get_date</span><span class="op">(</span><span class="nam">date_str</span><span class="op">:</span> <span class="nam">str</span><span class="op">)</span> <span class="op">-></span> <span class="nam">str</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t16" href="#t16">16</a></span><span class="t">    <span class="str">"""&#1060;&#1091;&#1085;&#1082;&#1094;&#1080;&#1103; &#1087;&#1088;&#1080;&#1085;&#1080;&#1084;&#1072;&#1077;&#1090; &#1085;&#1072; &#1074;&#1093;&#1086;&#1076; &#1089;&#1090;&#1088;&#1086;&#1082;&#1091; &#1089; &#1076;&#1072;&#1090;&#1086;&#1081; &#1074; &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1077; '2024-03-11T02:26:18.671407'</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t17" href="#t17">17</a></span><span class="t"><span class="str">    &#1080; &#1074;&#1086;&#1079;&#1074;&#1088;&#1072;&#1097;&#1072;&#1077;&#1090; &#1089;&#1090;&#1088;&#1086;&#1082;&#1091; &#1089; &#1076;&#1072;&#1090;&#1086;&#1081; &#1074; &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1077; '&#1044;&#1044;.&#1052;&#1052;.&#1043;&#1043;&#1043;&#1043;'."""</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t18" href="#t18">18</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t19" href="#t19">19</a></span><span class="t">    <span class="key">return</span> <span class="fst">f"</span><span class="op">{</span><span class="nam">date_str</span><span class="op">[</span><span class="num">8</span><span class="op">:</span><span class="num">10</span><span class="op">]</span><span class="op">}</span><span class="fst">.</span><span class="op">{</span><span class="nam">date_str</span><span class="op">[</span><span class="num">5</span><span class="op">:</span><span class="num">7</span><span class="op">]</span><span class="op">}</span><span class="fst">.</span><span class="op">{</span><span class="nam">date_str</span><span class="op">[</span><span class="op">:</span><span class="num">4</span><span class="op">]</span><span class="op">}</span><span class="fst">"</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t8" href="#t8">8</a></span><span class="t">    <span class="com"># &#1055;&#1088;&#1086;&#1074;&#1077;&#1088;&#1082;&#1072; &#1085;&#1072; None &#1080;&#1083;&#1080; &#1087;&#1091;&#1089;&#1090;&#1091;&#1102; &#1089;&#1090;&#1088;&#1086;&#1082;&#1091;</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t">    <span class="key">if</span> <span class="key">not</span> <span class="nam">card_info</span> <span class="key">or</span> <span class="key">not</span> <span class="nam">isinstance</span><span class="op">(</span><span class="nam">card_info</span><span class="op">,</span> <span class="nam">str</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t10" href="#t10">10</a></span><span class="t">        <span class="key">return</span> <span class="str">"&#1053;&#1077;&#1076;&#1086;&#1089;&#1090;&#1091;&#1087;&#1085;&#1086;"</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t11" href="#t11">11</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t12" href="#t12">12</a></span><span class="t">    <span class="key">if</span> <span class="str">"&#1057;&#1095;&#1077;&#1090;"</span> <span class="key">in</span> <span class="nam">card_info</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t13" href="#t13">13</a></span><span class="t">        <span class="key">return</span> <span class="fst">f"</span><span class="op">{</span><span class="nam">card_info</span><span class="op">[</span><span class="op">:</span><span class="num">5</span><span class="op">]</span><span class="op">}</span><span class="op">{</span><span class="nam">get_mask_account</span><span class="op">(</span><span class="nam">card_info</span><span class="op">)</span><span class="op">}</span><span class="fst">"</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t14" href="#t14">14</a></span><span class="t">    <span class="key">else</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t15" href="#t15">15</a></span><span class="t">        <span class="key">return</span> <span class="fst">f"</span><span class="op">{</span><span class="nam">card_info</span><span class="op">[</span><span class="op">:</span><span class="op">-</span><span class="num">16</span><span class="op">]</span><span class="op">}</span><span class="op">{</span><span class="nam">get_mask_card_number</span><span class="op">(</span><span class="nam">card_info</span><span class="op">[</span><span class="op">-</span><span class="num">16</span><span class="op">:</span><span class="op">]</span><span class="op">)</span><span class="op">}</span><span class="fst">"</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t16" href="#t16">16</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t17" href="#t17">17</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t18" href="#t18">18</a></span><span class="t"><span class="key">def</span> <span class="nam">get_date</span><span class="op">(</span><span class="nam">date_str</span><span class="op">:</span> <span class="nam">str</span><span class="op">)</span> <span class="op">-></span> <span class="nam">str</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t19" href="#t19">19</a></span><span class="t">    <span class="str">"""&#1060;&#1091;&#1085;&#1082;&#1094;&#1080;&#1103; &#1087;&#1088;&#1080;&#1085;&#1080;&#1084;&#1072;&#1077;&#1090; &#1085;&#1072; &#1074;&#1093;&#1086;&#1076; &#1089;&#1090;&#1088;&#1086;&#1082;&#1091; &#1089; &#1076;&#1072;&#1090;&#1086;&#1081; &#1074; &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1077; '2024-03-11T02:26:18.671407'</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t20" href="#t20">20</a></span><span class="t"><span class="str">    &#1080; &#1074;&#1086;&#1079;&#1074;&#1088;&#1072;&#1097;&#1072;&#1077;&#1090; &#1089;&#1090;&#1088;&#1086;&#1082;&#1091; &#1089; &#1076;&#1072;&#1090;&#1086;&#1081; &#1074; &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1077; '&#1044;&#1044;.&#1052;&#1052;.&#1043;&#1043;&#1043;&#1043;'."""</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t21" href="#t21">21</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t22" href="#t22">22</a></span><span class="t">    <span class="key">return</span> <span class="fst">f"</span><span class="op">{</span><span class="nam">date_str</span><span class="op">[</span><span class="num">8</span><span class="op">:</span><span class="num">10</span><span class="op">]</span><span class="op">}</span><span class="fst">.</span><span class="op">{</span><span class="nam">date_str</span><span class="op">[</span><span class="num">5</span><span class="op">:</span><span class="num">7</span><span class="op">]</span><span class="op">}</span><span class="fst">.</span><span class="op">{</span><span class="nam">date_str</span><span class="op">[</span><span class="op">:</span><span class="num">4</span><span class="op">]</span><span class="op">}</span><span class="fst">"</span>&nbsp;</span><span class="r"></span></p>
 </main>
 <footer>
     <div class="content">
         <p>
-            <a class="nav" href="z_145eef247bfb46b6_processing_py.html">&#xab; prev</a> &nbsp; &nbsp;
+            <a class="nav" href="z_145eef247bfb46b6_utils_py.html">&#xab; prev</a> &nbsp; &nbsp;
             <a class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
             <a class="nav" href="index.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.8.2">coverage.py v7.8.2</a>,
-            created at 2025-06-09 13:57 +1000
+            created at 2025-07-25 22:32 +1000
         </p>
     </div>
 </footer>

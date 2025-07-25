@@ -30,6 +30,10 @@ def get_mask_card_number(card_number: str) -> str:
 
     logger.debug("Вызов функции get_mask_card_number с аргументом: %s", card_number)
 
+    # Проверка на пустые значения
+    if not card_number or not isinstance(card_number, str):
+        raise ValueError("Номер карты не может быть пустым.")
+
     # Проверяем, что вход это строка или число, которое можно преобразовать в строку
     if not isinstance(card_number, str):
         logger.error("Номер карты должен быть строкой.")
