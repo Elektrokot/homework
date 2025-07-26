@@ -1,5 +1,5 @@
 import os
-from unittest.mock import Mock, mock_open, patch
+from unittest.mock import MagicMock, Mock, mock_open, patch
 
 import pandas as pd
 import pytest
@@ -101,7 +101,21 @@ def test_read_csv_empty_file(mock_file, mock_exists):  # type: ignore[no-untyped
 @pytest.mark.parametrize(
     "file_path, file_content, expected_result",
     [
-        ("input_data/valid.csv", "id;amount\n1;100", [{"id": "1", "amount": "100"}]),
+        (
+            "input_data/valid.csv",
+            "id;amount\n1;100",
+            [
+                {
+                    "id": "1",
+                    "state": None,
+                    "date": None,
+                    "description": None,
+                    "from": None,
+                    "to": None,
+                    "operationAmount": {"amount": "100", "currency": {"name": "руб.", "code": "RUB"}},
+                }
+            ],
+        ),
         ("input_data/empty.csv", "", []),
         ("invalid/path.csv", None, []),
     ],
@@ -121,19 +135,43 @@ def test_read_csv_variants(file_path, file_content, expected_result, tmpdir):  #
 # === Тесты для read_excel_transactions ===
 
 
-def test_read_excel_transactions_success(mock_pandas_dataframe):  # type: ignore[no-untyped-def]
+def test_read_excel_transactions_success() -> None:
     """Тестирует успешное чтение Excel-файла."""
+    # Создаем мок данные, которые будут имитировать DataFrame
+    mock_data = [{"id": "1", "amount": "100"}, {"id": "2", "amount": "200"}]
+
+    # Создаем мок объект DataFrame
+    mock_pandas_dataframe = MagicMock()
+    mock_pandas_dataframe.iterrows.return_value = enumerate(mock_data)  # Имитация iterrows()
+
+    # Патчим os.path.exists и pandas.read_excel
     with patch("os.path.exists", return_value=True), patch("pandas.read_excel", return_value=mock_pandas_dataframe):
         result = read_excel_transactions("test.xlsx")
 
-        assert isinstance(result, list)
-        assert len(result) == 2
-        assert result == [
-            {"id": 1, "amount": 100.0, "date": "2023-01-01"},
-            {"id": 2, "amount": 200.0, "date": "2023-01-02"},
-        ]
-        pd.read_excel.assert_called_once_with("test.xlsx")
-        mock_pandas_dataframe.to_dict.assert_called_once_with(orient="records")
+    # Ожидаемый результат с полной структурой данных
+    expected_result = [
+        {
+            "id": "1",
+            "state": None,
+            "date": None,
+            "description": None,
+            "from": None,
+            "to": None,
+            "operationAmount": {"amount": "100", "currency": {"name": "руб.", "code": "RUB"}},
+        },
+        {
+            "id": "2",
+            "state": None,
+            "date": None,
+            "description": None,
+            "from": None,
+            "to": None,
+            "operationAmount": {"amount": "200", "currency": {"name": "руб.", "code": "RUB"}},
+        },
+    ]
+
+    # Проверяем результат
+    assert result == expected_result
 
 
 def test_read_excel_transactions_file_not_found():  # type: ignore[no-untyped-def]
@@ -149,7 +187,7 @@ def test_read_excel_transactions_file_not_found():  # type: ignore[no-untyped-de
 def test_read_excel_transactions_invalid_file_type():  # type: ignore[no-untyped-def]
     """Тестирует выброс TypeError при неверном типе file_path."""
     with pytest.raises(TypeError, match="file_path должен быть строкой."):
-        read_excel_transactions(123) # type: ignore[arg-type]
+        read_excel_transactions(123)  # type: ignore[arg-type]
 
 
 def test_read_excel_transactions_parser_error(mock_pandas_dataframe):  # type: ignore[no-untyped-def]

@@ -5,12 +5,11 @@ from typing import Any, Dict, List
 import pandas as pd
 
 
-def read_csv_transactions(file_path: str) -> List[Dict[str, Any]]:
+def read_csv_transactions(
+    file_path: str,
+) -> list[dict[str, dict[str, dict[str, str | Any] | str | Any] | str | Any | None]]:
     """
     Считывает финансовые операции из CSV-файла и возвращает список словарей.
-
-    :param file_path: Путь к CSV-файлу.
-    :return: Список транзакций в виде словарей или пустой список при ошибке.
     """
     if not isinstance(file_path, str):
         raise TypeError("file_path должен быть строкой.")
@@ -21,7 +20,27 @@ def read_csv_transactions(file_path: str) -> List[Dict[str, Any]]:
 
         with open(file_path, mode="r", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile, delimiter=";")
-            return [row for row in reader]
+            transactions = []
+            for row in reader:
+                # Преобразуем данные в структуру, аналогичную JSON
+                transaction = {
+                    "id": row.get("id"),
+                    "state": row.get("state"),
+                    "date": row.get("date"),
+                    "description": row.get("description"),
+                    "from": row.get("from"),
+                    "to": row.get("to"),
+                    "operationAmount": {
+                        "amount": row.get("amount", "0"),
+                        "currency": {
+                            "name": row.get("currency_name", "руб."),
+                            "code": row.get("currency_code", "RUB"),
+                        },
+                    },
+                }
+                transactions.append(transaction)
+
+            return transactions
 
     except (FileNotFoundError, csv.Error, UnicodeDecodeError) as e:
         print(f"Ошибка при чтении CSV-файла: {e}")
@@ -42,10 +61,30 @@ def read_excel_transactions(file_path: str) -> List[Dict[str, Any]]:
         if not os.path.exists(file_path):
             return []
 
-        df = pd.read_excel(file_path)
-        # Преобразуем ключи в строки
-        records = df.to_dict(orient="records")
-        return [{str(k): v for k, v in record.items()} for record in records]
+        # Чтение данных из Excel
+        df = pd.read_excel(file_path, dtype=str)
+
+        # Преобразование DataFrame в список словарей
+        transactions = []
+        for _, row in df.iterrows():
+            transaction = {
+                "id": row.get("id"),
+                "state": row.get("state"),
+                "date": row.get("date"),
+                "description": row.get("description"),
+                "from": row.get("from"),
+                "to": row.get("to"),
+                "operationAmount": {
+                    "amount": row.get("amount", "0"),
+                    "currency": {
+                        "name": row.get("currency_name", "руб."),
+                        "code": row.get("currency_code", "RUB"),
+                    },
+                },
+            }
+            transactions.append(transaction)
+
+        return transactions
 
     except (FileNotFoundError, pd.errors.ParserError, UnicodeDecodeError) as e:
         print(f"Ошибка при чтении Excel-файла: {e}")

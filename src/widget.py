@@ -5,10 +5,13 @@ def mask_account_card(card_info: str) -> str:
     """Функция обрабатывает информацию как о картах,
     так и о счетах и возвращает строку с замаскированным номером."""
 
+    # Проверка на None или пустую строку
+    if not card_info or not isinstance(card_info, str):
+        return "Недоступно"
+
     if "Счет" in card_info:
         return f"{card_info[:5]}{get_mask_account(card_info)}"
     else:
-        # cleaned_card_info_str = ''.join(char for char in card_info if char.isalpha())
         return f"{card_info[:-16]}{get_mask_card_number(card_info[-16:])}"
 
 
